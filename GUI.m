@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 29-Nov-2017 11:30:26
+% Last Modified by GUIDE v2.5 29-Nov-2017 12:02:49
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -70,6 +70,8 @@ handles.settingsPanel = uitab('Parent', handles.tgroup, 'Title', 'Processing set
 
 %Place panels into each tab
 set(handles.dataTable, 'Parent', handles.dataPanel)
+addprop(handles.dataTable, 'selectedRows');
+addprop(handles.dataTable, 'selectedCols');
 set(handles.filterDataButton, 'Parent', handles.dataPanel)
 
 set(handles.rawData, 'Parent', handles.plotPanel)
@@ -213,13 +215,14 @@ function Open_ClickedCallback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 filename = uigetfile('*.xls*');
-
+ 
 data = LoadDataFromExcel(filename);
 
 set(handles.dataTable,'data',data);
-
 end
 
+%selectedRows = [];
+%selectedCols = [];
 
 % --- Executes on button press in filterDataButton.
 function filterDataButton_Callback(hObject, eventdata, handles)
@@ -227,6 +230,26 @@ function filterDataButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+selectedRows = handles.dataTable.selectedRows;
+selectedCols = handles.dataTable.selectedCols;
+data = get(handles.dataTable,'data');
+
+%fprintf('Min Row: %d, Max Row: %d\nMin Col: %d Max Col: %d',);
+data = data(min(selectedRows):max(selectedRows),min(selectedCols):max(selectedCols))
+set(handles.dataTable,'data',data);
+end
+
+
+% --- Executes when selected cell(s) is changed in dataTable.
+function dataTable_CellSelectionCallback(hObject, eventdata, handles)
+% hObject    handle to dataTable (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
+%	Indices: row and column indices of the cell(s) currently selecteds
+% handles    structure with handles and user data (see GUIDATA)
+
+
+handles.dataTable.selectedRows = unique(eventdata.Indices(:,1));
+handles.dataTable.selectedCols = unique(eventdata.Indices(:,2));
 end
 
 %Plots data on a graph in the GUI
