@@ -199,11 +199,17 @@ function Open_ClickedCallback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-filename = uigetfile('*.xls*');
+[filename,pathname] = uigetfile({'*.xls*';'*.csv'});
  
-data = LoadDataFromExcel(filename);
+filename = strcat(pathname, filename);
 
-set(handles.dataTable,'data',data);
+if not (filename == 0)
+	data = LoadDataFromExcel(filename);
+	
+	data = data(10:end,1:end);
+	
+	set(handles.dataTable,'data',data);
+end
 end
 
 % --- Executes on button press in filterDataButton.
@@ -233,7 +239,6 @@ function dataTable_CellSelectionCallback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 handles.dataTable.selectedRows = unique(eventdata.Indices(:,1));
 handles.dataTable.selectedCols = unique(eventdata.Indices(:,2));
-
 end
 
 
@@ -255,5 +260,4 @@ function saveApplyButton_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 plotDFT(get(handles.dataTable, 'data'), handles);
-
 end
