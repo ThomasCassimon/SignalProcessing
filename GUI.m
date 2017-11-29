@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 29-Nov-2017 11:30:26
+% Last Modified by GUIDE v2.5 29-Nov-2017 14:15:46
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -82,14 +82,6 @@ set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
-
-
-
-%plot test
-x = 0:10;
-y = 0:10;
-plot(x,y,handles.timeDomainPlot);
-
 
 end
 
@@ -231,5 +223,26 @@ function filterDataButton_Callback(hObject, eventdata, handles)
 % hObject    handle to filterDataButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+end
+
+
+% --- Executes on button press in applyButton.
+function applyButton_Callback(hObject, eventdata, handles)
+% hObject    handle to applyButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+plotDFT(get(handles.dataTable, 'data'),handles);
+
+end
+
+
+% --- Executes on button press in saveApplyButton.
+function saveApplyButton_Callback(hObject, eventdata, handles)
+% hObject    handle to saveApplyButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
 
 end
