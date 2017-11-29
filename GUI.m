@@ -83,14 +83,6 @@ set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
 
-
-
-%plot test
-x = 0:10;
-y = 0:10;
-plot(x,y,handles.timeDomainPlot);
-
-
 end
 
 % UIWAIT makes GUI wait for user response (see UIRESUME)
@@ -231,5 +223,27 @@ function filterDataButton_Callback(hObject, eventdata, handles)
 % hObject    handle to filterDataButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+end
+
+%Plots data on a graph in the GUI
+%type specifies on which graph you want to plot
+%type = 0 => time domain graph
+%type = 1 => frequency domain magnitude graph
+%type = 2 => frequency domain phase graph
+function plotGraph(x, y, type, handles)
+
+switch(type)
+    case 0
+        axes(handles.timeDomainPlot);
+    case 1
+        axes(handles.frequencyMagnitudePlot);
+    case 2
+        axes(handles.frequencyPhasePlot);
+    otherwise
+        fprintf('Bad argument %d for plotGraph function', type);
+end
+
+plot(x,y)
 
 end
