@@ -203,11 +203,17 @@ function Open_ClickedCallback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-filename = uigetfile('*.xls*');
+[filename,pathname] = uigetfile({'*.xls*';'*.csv'});
  
-data = LoadDataFromExcel(filename);
+filename = strcat(pathname, filename);
 
-set(handles.dataTable,'data',data);
+if not (filename == 0)
+	data = LoadDataFromExcel(filename);
+	
+	data = data(10:end,1:end);
+	
+	set(handles.dataTable,'data',data);
+end
 end
 
 % --- Executes on button press in filterDataButton.
@@ -234,27 +240,4 @@ function dataTable_CellSelectionCallback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 handles.dataTable.selectedRows = unique(eventdata.Indices(:,1));
 handles.dataTable.selectedCols = unique(eventdata.Indices(:,2));
-
-end
-
-%Plots data on a graph in the GUI
-%type specifies on which graph you want to plot
-%type = 0 => time domain graph
-%type = 1 => frequency domain magnitude graph
-%type = 2 => frequency domain phase graph
-function plotGraph(x, y, type, handles)
-
-switch(type)
-    case 0
-        axes(handles.timeDomainPlot);
-    case 1
-        axes(handles.frequencyMagnitudePlot);
-    case 2
-        axes(handles.frequencyPhasePlot);
-    otherwise
-        fprintf('Bad argument %d for plotGraph function', type);
-end
-
-plot(x,y)
-
 end
