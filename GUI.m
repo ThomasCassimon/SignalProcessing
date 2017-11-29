@@ -211,7 +211,7 @@ function Open_ClickedCallback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 filename = uigetfile('*.xls*');
-
+ 
 data = LoadDataFromExcel(filename);
 
 set(handles.dataTable,'data',data);
