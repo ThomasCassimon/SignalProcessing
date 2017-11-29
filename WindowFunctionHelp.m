@@ -58,8 +58,6 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
-set(handles.
-
 % UIWAIT makes WindowFunctionHelp wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
