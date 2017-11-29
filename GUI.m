@@ -234,8 +234,8 @@ selectedRows = handles.dataTable.selectedRows;
 selectedCols = handles.dataTable.selectedCols;
 data = get(handles.dataTable,'data');
 
-%fprintf('Min Row: %d, Max Row: %d\nMin Col: %d Max Col: %d',);
-data = data(min(selectedRows):max(selectedRows),min(selectedCols):max(selectedCols))
+%fprintf('Min Row: %d, Max Row: %d\nMin Col: %d, Max Col: %d',min(selectedRows),max(selectedRows),min(selectedCols),max(selectedCols));
+data = data(min(selectedRows):max(selectedRows),min(selectedCols):max(selectedCols));
 set(handles.dataTable,'data',data);
 end
 
@@ -246,10 +246,9 @@ function dataTable_CellSelectionCallback(hObject, eventdata, handles)
 % eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
 %	Indices: row and column indices of the cell(s) currently selecteds
 % handles    structure with handles and user data (see GUIDATA)
-
-
 handles.dataTable.selectedRows = unique(eventdata.Indices(:,1));
 handles.dataTable.selectedCols = unique(eventdata.Indices(:,2));
+
 end
 
 %Plots data on a graph in the GUI
