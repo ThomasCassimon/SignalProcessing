@@ -149,17 +149,6 @@ end
 
 
 % --------------------------------------------------------------------
-function settings_ClickedCallback(hObject, eventdata, handles)
-% hObject    handle to settings (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-run('SettingsDialog.m');
-
-end
-
-
-% --------------------------------------------------------------------
 function Help_ClickedCallback(hObject, eventdata, handles)
 % hObject    handle to Help (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -220,9 +209,6 @@ data = LoadDataFromExcel(filename);
 
 set(handles.dataTable,'data',data);
 end
-
-%selectedRows = [];
-%selectedCols = [];
 
 % --- Executes on button press in filterDataButton.
 function filterDataButton_Callback(hObject, eventdata, handles)
