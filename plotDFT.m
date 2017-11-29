@@ -1,8 +1,7 @@
 function [] = plotDFT (signal, handles)
-    
     Xp = fft(signal);
 
-	Phi = phase(Xp);
+	Phi = angle(Xp);
 	Mag = mag2db(abs(Xp));
 
 	axes(handles.timeDomainPlot);
