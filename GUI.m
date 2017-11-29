@@ -242,8 +242,8 @@ function dataTable_CellSelectionCallback(hObject, eventdata, handles)
 % eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
 %	Indices: row and column indices of the cell(s) currently selecteds
 % handles    structure with handles and user data (see GUIDATA)
-handles.dataTable.selectedRows = unique(eventdata.Indices(:,1));
-handles.dataTable.selectedCols = unique(eventdata.Indices(:,2));
+handles.dataTable.selectedRows = unique(eventdata.Indices(:,1))
+handles.dataTable.selectedCols = unique(eventdata.Indices(:,2))
 
 end
 
@@ -287,5 +287,6 @@ function saveApplyButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+plotDFT(get(handles.dataTable, 'data'), handles);
 
 end
