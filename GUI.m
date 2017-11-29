@@ -22,7 +22,6 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 29-Nov-2017 12:02:49
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -84,9 +83,6 @@ set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
-
-y = 0:1:10;
-plotDFT(y,handles)
 
 end
 
@@ -229,6 +225,9 @@ data = get(handles.dataTable,'data');
 %fprintf('Min Row: %d, Max Row: %d\nMin Col: %d, Max Col: %d',min(selectedRows),max(selectedRows),min(selectedCols),max(selectedCols));
 data = data(min(selectedRows):max(selectedRows),min(selectedCols):max(selectedCols));
 set(handles.dataTable,'data',data);
+
+plotDFT(data, handles);
+
 end
 
 
@@ -240,4 +239,25 @@ function dataTable_CellSelectionCallback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 handles.dataTable.selectedRows = unique(eventdata.Indices(:,1));
 handles.dataTable.selectedCols = unique(eventdata.Indices(:,2));
+end
+
+
+% --- Executes on button press in applyButton.
+function applyButton_Callback(hObject, eventdata, handles)
+% hObject    handle to applyButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+plotDFT(get(handles.dataTable, 'data'),handles);
+
+end
+
+
+% --- Executes on button press in saveApplyButton.
+function saveApplyButton_Callback(hObject, eventdata, handles)
+% hObject    handle to saveApplyButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+plotDFT(get(handles.dataTable, 'data'), handles);
 end
