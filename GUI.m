@@ -215,7 +215,7 @@ filename = uigetfile('*.xls*');
 data = LoadDataFromExcel(filename);
 
 set(handles.dataTable,'data',data);
-
+ 
 end
 
 %selectedRows = [];
