@@ -83,6 +83,9 @@ set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
 
+y = 0:1:10;
+plotDFT(y,handles)
+
 end
 
 % UIWAIT makes GUI wait for user response (see UIRESUME)
