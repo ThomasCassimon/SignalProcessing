@@ -84,6 +84,10 @@ set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
+
+y = 0:1:10;
+plotDFT(y,handles)
+
 end
 
 % UIWAIT makes GUI wait for user response (see UIRESUME)
@@ -199,7 +203,7 @@ function edit1_CreateFcn(hObject, eventdata, handles)
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
-end
+end 
 
 end
 
