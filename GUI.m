@@ -83,6 +83,8 @@ set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
+set(handles.applyButton, 'Parent', handles.settingsPanel)
+set(handles.saveApplyButton,'Parent',handles.settingsPanel)
 
 end
 
@@ -150,7 +152,8 @@ function Help_ClickedCallback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-run('helpWindow.m');
+%run('helpWindow.m');
+%open('WindowHelp.html');
 
 end
 
@@ -255,5 +258,13 @@ function saveApplyButton_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 plotDFT(get(handles.dataTable, 'data'), handles);
+
+end
+
+function helpWindowButton_Callback(hobject, eventdata, handles)
+% hObject    handle to helpWindowButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+open('WindowHelp.html');
 
 end
