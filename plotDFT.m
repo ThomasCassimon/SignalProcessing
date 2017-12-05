@@ -1,5 +1,5 @@
 function [] = plotDFT (signal, handles)
-	%settings = LoadSettings('Settings.json');
+	settings = LoadSettings('Settings.json');
 	
 	%win = ones(1, length(signal));
 	
