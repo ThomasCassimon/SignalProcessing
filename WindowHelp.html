@@ -1,76 +1,97 @@
 <html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="Style.css">
+	</head>
 	<body>
 		<h1>Introduction</h1>
-		<p>
+		<div>
 			<h2>Noise Suppression</h2>
-				<p>
+				<div>
 					Every DFT bin gathers some amount of noise. The Noise Suppression characteristic of an analysis window indicates how well an analysis window suppresses noise.<br>
 					All Noise Suppression values are relative to that of the rectangular window. (So the rectangular window has a noise suppresion of 1).<br>
 					<br>
 					In short: Lower is better.<br>
-				</p>
+				</div>
 			<h2>Dynamic Range</h2>
-				<p>
+				<div>
 					Dynamic range indicates the ability to separate large spectral components from small (noise) components.<br>
 					<br>
 					In short: Higher is better.<br>
-				</p>
-		</p>
+				</div>
+		</div>
 		<h1>Analysis Windows</h1>
-		<p>
-			<p class="window">
+		<div>
+			<div class="window">
 				<h2>Rectangular Window</h2>
-				&beta;<sub>Noise</sub> = 1<br>
-				DR = 13.4dB<br>
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 1<br>
+					DR = 13.4dB<br>
+				</div>
+			</div>
 
-			<p class="window">
+			<div class="window">
 				<h2>Bartlett Window</h2>
-				&beta;<sub>Noise</sub> = 1.335
-				DR = 26.3dB
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 1.335<br>
+					DR = 26.3dB<br>
+				</div>
+			</div>
 
-			<p class="window">
+			<div class="window">
 				<h2>Hann Window</h2>
-				&beta;<sub>Noise</sub> = 1.5
-				DR = 31.5dB
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 1.5<br>
+					DR = 31.5dB<br>
+				</div>
+			</div>
 
-			<p class="window">
+			<div class="window">
 				<h2>Hamming Window</h2>
-				&beta;<sub>Noise</sub> = 1.36
-				DR = 41.8dB
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 1.36<br>
+					DR = 41.8dB<br>
+				</div>
+			</div>
 
-			<p class="window">
+			<div class="window">
 				<h2>Blackman Window</h2>
-				&beta;<sub>Noise</sub> = 1.727
-				DR = 58.3dB
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 1.727<br>
+					DR = 58.3dB<br>
+				</div>
+			</div>
 
-			<p class="window">
+			<div class="window">
 				<h2>Nutall Window</h2>
-				&beta;<sub>Noise</sub> = 2.02
-				DR = 93.4dB
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 2.02<br>
+					DR = 93.4dB<br>
+				</div>
+			</div>
 
-			<p class="window">
+			<div class="window">
 				<h2>Blackman-Harris Window</h2>
-				&beta;<sub>Noise</sub> = 2
-				DR = 91.9dB
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 2<br>
+					DR = 91.9dB<br>
+				</div>
+			</div>
 			
-			<p class="window">
+			<div class="window">
 				<h2>Blackmann-Nuttall Window</h2>
-				&beta;<sub>Noise</sub> = 1.976
-				DR = 88.9dB
-			</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 1.976<br>
+					DR = 88.9dB<br>
+				</div>
+			</div>
 			
-			<p class="window">
+			<div class="window">
 				<h2>Flat Top Window</h2>
-				&beta;<sub>Noise</sub> = 3.77
-				DR = 69dB
-			</p>
-		</p>
+				<div class="windowContent">
+					&beta;<sub>Noise</sub> = 3.77<br>
+					DR = 69dB<br>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
