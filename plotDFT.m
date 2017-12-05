@@ -17,6 +17,20 @@ function [] = plotDFT (signal, handles)
 	Mag = mag2db(abs(Xp));
     
     K = [0:1:length(signal)-1];
+    
+    
+   %DETERMINE WINDOW FUNCTION
+   switch settings.WindowFunction
+       case "Rectangle"
+           window = rectwin(length(signal));
+           printf('Rectangle');
+       case "Bartlett"
+           window = bartlett(length(signal));
+           printf('Bartlett');
+       
+       
+       
+   end
 
 	axes(handles.timeDomainPlot);
 	plot(K, signal, '-og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green', 'MarkerSize', 2);

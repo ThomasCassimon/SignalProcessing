@@ -132,6 +132,8 @@ function rawData_Callback(hObject, eventdata, handles)          %CHECKBOX: show 
 
 % Hint: get(hObject,'Value') returns toggle state of rawData
 
+plotDFT(get(handles.dataTable, 'data'), handles);
+
 end
 
 
@@ -142,6 +144,8 @@ function processedData_Callback(hObject, eventdata, handles)    %CHECKBOX: show 
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of processedData
+
+plotDFT(get(handles.dataTable, 'data'), handles);
 
 end
 
