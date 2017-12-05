@@ -252,9 +252,7 @@ function applyButton_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 plotDFT(get(handles.dataTable, 'data'),handles);
-
 end
-
 
 % --- Executes on button press in saveApplyButton.
 function saveApplyButton_Callback(hObject, eventdata, handles)

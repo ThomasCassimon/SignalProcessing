@@ -9,15 +9,13 @@ function [settings] = LoadSettings(settingsFile)
 	WindowFunctions = ["Rectangle","Bartlett","Hann","Hamming","Blackman","Kaiser","Nuttall","Blackman-Harris","Blackman-Nuttall","Flat_Top"];
 	NoiseRemovalMethods = ["ProcessingGain", "IntegrationGain"];
 
-	settings = LoadSettings('Settings.json');
-
 	if (sum(WindowFunctions == settings.WindowFunction) <= 0)
 		fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);
 		settings.WindowFunction = "Hamming";
 	end
 
 	if (sum(NoiseRemovalMethods == settings.NoiseRemovalMethod) <= 0)
-		fprintf('Unknown Noise Removal Method: "%s", Choosing processing gain with 400%.\n', settings.NoiseRemovalMethod);
+		fprintf('Unknown Noise Removal Method: "%s", Choosing processing gain with 400%%.\n', settings.NoiseRemovalMethod);
 		settings.NoiseRemovalMethod = "ProcessingGain";
 		settings.ProcessingGainPercentage = 400;
 	end
