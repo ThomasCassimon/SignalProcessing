@@ -22,6 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
+% Last Modified by GUIDE v2.5 29-Nov-2017 12:02:49
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -83,8 +84,9 @@ set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
-set(handles.applyButton, 'Parent', handles.settingsPanel)
-set(handles.saveApplyButton,'Parent',handles.settingsPanel)
+
+y = 0:1:10;
+plotDFT(y,handles)
 
 end
 
@@ -146,14 +148,15 @@ function processedData_Callback(hObject, eventdata, handles)    %CHECKBOX: show 
 end
 
 
+
+
 % --------------------------------------------------------------------
 function Help_ClickedCallback(hObject, eventdata, handles)
 % hObject    handle to Help (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-%run('helpWindow.m');
-%open('WindowHelp.html');
+run('helpWindow.m');
 
 end
 
@@ -202,18 +205,15 @@ function Open_ClickedCallback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-[filename,pathname] = uigetfile({'*.xls*';'*.csv'});
+filename = uigetfile('*.xls*');
  
-filename = strcat(pathname, filename);
+data = LoadDataFromExcel(filename);
 
-if not (filename == 0)
-	data = LoadDataFromExcel(filename);
-	
-	data = data(10:end,1:end);
-	
-	set(handles.dataTable,'data',data);
+set(handles.dataTable,'data',data);
 end
-end
+
+%selectedRows = [];
+%selectedCols = [];
 
 % --- Executes on button press in filterDataButton.
 function filterDataButton_Callback(hObject, eventdata, handles)
@@ -228,9 +228,6 @@ data = get(handles.dataTable,'data');
 %fprintf('Min Row: %d, Max Row: %d\nMin Col: %d, Max Col: %d',min(selectedRows),max(selectedRows),min(selectedCols),max(selectedCols));
 data = data(min(selectedRows):max(selectedRows),min(selectedCols):max(selectedCols));
 set(handles.dataTable,'data',data);
-
-plotDFT(data, handles);
-
 end
 
 
@@ -242,33 +239,27 @@ function dataTable_CellSelectionCallback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 handles.dataTable.selectedRows = unique(eventdata.Indices(:,1));
 handles.dataTable.selectedCols = unique(eventdata.Indices(:,2));
-end
-
-
-% --- Executes on button press in applyButton.
-function applyButton_Callback(hObject, eventdata, handles)
-% hObject    handle to applyButton (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-plotDFT(get(handles.dataTable, 'data'),handles);
 
 end
 
+%Plots data on a graph in the GUI
+%type specifies on which graph you want to plot
+%type = 0 => time domain graph
+%type = 1 => frequency domain magnitude graph
+%type = 2 => frequency domain phase graph
+function plotGraph(x, y, type, handles)
 
-% --- Executes on button press in saveApplyButton.
-function saveApplyButton_Callback(hObject, eventdata, handles)
-% hObject    handle to saveApplyButton (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-plotDFT(get(handles.dataTable, 'data'), handles);
+switch(type)
+    case 0
+        axes(handles.timeDomainPlot);
+    case 1
+        axes(handles.frequencyMagnitudePlot);
+    case 2
+        axes(handles.frequencyPhasePlot);
+    otherwise
+        fprintf('Bad argument %d for plotGraph function', type);
 end
 
-function helpWindowButton_Callback(hobject, eventdata, handles)
-% hObject    handle to helpWindowButton (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-open('WindowHelp.html');
+plot(x,y)
 
 end
