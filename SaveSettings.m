@@ -3,8 +3,18 @@ function [] = SaveSettings(settingsFile, handles)
 %   settingsFile is the file to save to
 %	handles are a bunch of handles to the UI
 
-settings = struct
-settings.WindowFunction = 
+settings = struct;
+
+settings.WindowFunction = handles.windowFunctionGroup.SelectedObject.String;
+settings.NoiseRemovalMethod = handles.noiseRemovalGroup.SelectedObject.String;
+settings.ProcessingGainPercentage = get(handles.processingGainEdit, 'String');
+settings.IntegrationGainNumRuns = get(handles.intgerationGainNumRunsEdit, 'String');
+
+json = jsonencode(settings);
+
+fid = fopen(settingsFile, 'w');
+fprintf(fid, '%s', json);
+fclose(fid);
 
 end
 

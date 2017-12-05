@@ -170,20 +170,20 @@ end
 
 
 
-function edit1_Callback(hObject, eventdata, handles)
-% hObject    handle to edit1 (see GCBO)
+function processingGainEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to processingGainEdit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit1 as text
-%        str2double(get(hObject,'String')) returns contents of edit1 as a double
+% Hints: get(hObject,'String') returns contents of processingGainEdit as text
+%        str2double(get(hObject,'String')) returns contents of processingGainEdit as a double
 
 end
 
 
 % --- Executes during object creation, after setting all properties.
-function edit1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit1 (see GCBO)
+function processingGainEdit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to processingGainEdit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -251,6 +251,7 @@ function applyButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+SaveSettings('Settings.json', handles);
 plotDFT(get(handles.dataTable, 'data'),handles);
 end
 
@@ -259,6 +260,10 @@ function saveApplyButton_Callback(hObject, eventdata, handles)
 % hObject    handle to saveApplyButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+[filename, pathname] = uiputfile('.json');
+settingsFile = strcat(pathname, filename);
+SaveSettings(settingsFile, handles);
 
 plotDFT(get(handles.dataTable, 'data'), handles);
 end
@@ -269,4 +274,26 @@ function helpWindowButton_Callback(hobject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 open('WindowHelp.html');
 
+end
+
+function intgerationGainNumRunsEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to intgerationGainNumRunsEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of intgerationGainNumRunsEdit as text
+%        str2double(get(hObject,'String')) returns contents of intgerationGainNumRunsEdit as a double
+end
+
+% --- Executes during object creation, after setting all properties.
+function intgerationGainNumRunsEdit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to intgerationGainNumRunsEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
 end
