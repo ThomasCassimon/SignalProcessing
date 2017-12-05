@@ -58,7 +58,6 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
-
 %set(handles.helpText, 'String', fileread('WindowHelp.html'));
 
 open('WindowHelp.html');
