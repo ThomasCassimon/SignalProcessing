@@ -86,6 +86,9 @@ set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
 set(handles.applyButton, 'Parent', handles.settingsPanel)
 set(handles.saveApplyButton,'Parent',handles.settingsPanel)
 
+
+set(handles.rawData, 'Value', 1);
+
 end
 
 % UIWAIT makes GUI wait for user response (see UIRESUME)
