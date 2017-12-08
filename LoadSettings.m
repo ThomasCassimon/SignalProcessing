@@ -1,5 +1,5 @@
 function [settings] = LoadSettings(settingsFile)
-%LoadSettings Loads Settings from a file
+%   LoadSettings Loads Settings from a file
 %   The file is a valid JSON file.
 %	This file is saved everytime the user presses "Save and Apply" in the
 %	settings window.
@@ -10,12 +10,12 @@ function [settings] = LoadSettings(settingsFile)
 	NoiseRemovalMethods = ["Processing Gain", "Integration Gain"];
 
 	if (sum(WindowFunctions == settings.WindowFunction) <= 0)
-		fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);
+		%fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);
 		settings.WindowFunction = "Hamming";
 	end
 
 	if (sum(NoiseRemovalMethods == settings.NoiseRemovalMethod) <= 0)
-		fprintf('Unknown Noise Removal Method: "%s", Choosing processing gain with 400%%.\n', settings.NoiseRemovalMethod);
+		%fprintf('Unknown Noise Removal Method: "%s", Choosing processing gain with 400%%.\n', settings.NoiseRemovalMethod);
 		settings.NoiseRemovalMethod = "ProcessingGain";
 		settings.ProcessingGainPercentage = 400;
 	end
