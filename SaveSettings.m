@@ -7,7 +7,7 @@ settings = struct;
 
 settings.WindowFunction = handles.windowFunctionGroup.SelectedObject.String;
 settings.NoiseRemovalMethod = handles.noiseRemovalGroup.SelectedObject.String;
-settings.ProcessingGainPercentage = get(handles.processingGainEdit, 'String');
+settings.ProcessingGainPercentage = get(handles.processingGain, 'String');
 settings.IntegrationGainNumRuns = get(handles.intgerationGainNumRunsEdit, 'String');
 
 json = jsonencode(settings);
