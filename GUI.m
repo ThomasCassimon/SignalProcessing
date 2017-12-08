@@ -304,3 +304,28 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 end
+
+
+
+function processingGain_Callback(hObject, eventdata, handles)
+% hObject    handle to processingGain (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of processingGain as text
+%        str2double(get(hObject,'String')) returns contents of processingGain as a double
+
+end
+
+% --- Executes during object creation, after setting all properties.
+function processingGain_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to processingGain (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
