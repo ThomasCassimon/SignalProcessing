@@ -1,5 +1,13 @@
 function [] = plotDFT (signal, handles)
 
+	settings = LoadSettings('Settings.json');
+	SaveSettings('Settings.json', handles);
+	%win = ones(1, length(signal));
+	
+	%if(settings.WindowFunction == "Rectangle")
+	%	win = rectwin(length(signal));
+	%end
+
     fprintf('plotting...\n');
 	settings = LoadSettings('Settings.json');
     
