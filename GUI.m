@@ -294,3 +294,16 @@ function processingGainEdit_Callback(hObject, eventdata, handles)
 
 end
 
+
+
+% --------------------------------------------------------------------
+function open_settings_ClickedCallback(hObject, eventdata, handles)
+% hObject    handle to open_settings (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+[filename,pathname] = uigetfile({'*.json'});
+filename = strcat(pathname, filename);
+LoadSettings(filename, handles);
+
+end
