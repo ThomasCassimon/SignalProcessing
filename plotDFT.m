@@ -59,13 +59,15 @@ function [] = plotDFT (signal, handles)
     cla;
     if showRaw == 1
         plot(K, signal, '-og', 'MarkerEdgeColor', 'Blue', 'MarkerFaceColor','Blue','Color','Blue', 'MarkerSize', 2);
+        legend('Raw data');
         hold on;
     end
     if showProcessed == 1 
         plot(K, processedSignal, '-og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
+        legend('Processed data');
     end
     if showRaw == 1 && showProcessed == 1
-         legend('Raw data', 'Processed data');
+        legend('Raw data', 'Processed data');
     end
     hold off;
     
@@ -83,17 +85,17 @@ function [] = plotDFT (signal, handles)
     cla;
     if(showRaw == 1)
         plot(K, Mag, 'o', 'MarkerEdgeColor','Blue', 'MarkerFaceColor','Blue', 'MarkerSize', 2);
+        legend('Raw data');
         hold on;
     end
     if(showProcessed == 1)
         plot(K, MagProcessed, 'o', 'MarkerEdgeColor','Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+        legend('Processed data');
     end
-    hold off;
-    
     if(showRaw == 1 && showProcessed == 1)
         legend('Raw data', 'Processed data');
     end
- 
+    hold off;
   
 	title('Magnitude [dB]');
 	xlabel('\omega');
@@ -106,13 +108,17 @@ function [] = plotDFT (signal, handles)
     cla;
     
     if(showRaw == 1)
-        plot(K, Phi, 'o', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+        plot(K, Phi, 'o', 'MarkerEdgeColor', 'Blue', 'MarkerFaceColor','Blue', 'MarkerSize', 2);
+        hold on;
+        legend('Raw data');
     end
     if(showProcessed == 1)
-        
+        plot(K, Phi, 'o', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+        legend('Processed data');
     end 
+    hold off;
     if(showProcessed == 1 && showRaw == 1)
-        
+        legend('Raw data', 'Processed data');
     end
 	
     
