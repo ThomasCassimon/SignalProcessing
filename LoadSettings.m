@@ -1,4 +1,4 @@
-function [settings] = LoadSettings(settingsFile)
+function [settings] = LoadSettings(settingsFile, handles)
 %   LoadSettings Loads Settings from a file
 %   The file is a valid JSON file.
 %	This file is saved everytime the user presses "Save and Apply" in the
@@ -18,6 +18,8 @@ function [settings] = LoadSettings(settingsFile)
 		%fprintf('Unknown Noise Removal Method: "%s", Choosing processing gain with 400%%.\n', settings.NoiseRemovalMethod);
 		settings.NoiseRemovalMethod = "ProcessingGain";
 		settings.ProcessingGainPercentage = 400;
-	end
+    end
+    
+    set(handles.windowFunctionGroup.SelectedObject,'String', settings.WindowFunction);
 end
 

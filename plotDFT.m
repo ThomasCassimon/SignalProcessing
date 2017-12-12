@@ -1,6 +1,6 @@
 function [] = plotDFT (signal, handles)
 
-	settings = LoadSettings('Settings.json');
+	settings = LoadSettings('Settings.json',handles);
     sampleFreq = get(handles.dataTable, 'sampleFreq')
 	SaveSettings('Settings.json', handles);
 
