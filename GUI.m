@@ -307,19 +307,18 @@ end
 
 
 
-function processingGain_Callback(hObject, eventdata, handles)
-% hObject    handle to processingGain (see GCBO)
+function integrationGainEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to integrationGainEdit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of processingGain as text
-%        str2double(get(hObject,'String')) returns contents of processingGain as a double
+% Hints: get(hObject,'String') returns contents of integrationGainEdit as text
+%        str2double(get(hObject,'String')) returns contents of integrationGainEdit as a double
 
-end
 
 % --- Executes during object creation, after setting all properties.
-function processingGain_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to processingGain (see GCBO)
+function integrationGainEdit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to integrationGainEdit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
