@@ -197,17 +197,9 @@ function Open_ClickedCallback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-[filename,pathname] = uigetfile({'*.xls*';'*.csv'});
- 
-filename = strcat(pathname, filename);
-
-if not (filename == 0)
-	data = LoadDataFromExcel(filename);
-	
-	data = data(10:end,1:end);
-	
-	set(handles.dataTable,'data',data);
-end
+[data, sampleFreq] = LoadDataFromExcel();
+set(handles.dataTable,'data',data);
+fprintf('Sample Frequency: %fHz\n', sampleFreq);
 end
 
 % --- Executes on button press in filterDataButton.
