@@ -6,8 +6,8 @@ function [settings] = LoadSettings(settingsFile)
 
 	settings = jsondecode(fileread(settingsFile));
 	
-	WindowFunctions = ["Rectangle","Bartlett","Hann","Hamming","Blackman","Kaiser","Nuttall","Blackman-Harris","Blackman-Nuttall","Flat_Top"];
-	NoiseRemovalMethods = ["ProcessingGain", "IntegrationGain"];
+	WindowFunctions = ["Rectangle Window","Bartlett Window","Hann Window","Hamming Window","Blackman Window","Flat Top Window"];
+	NoiseRemovalMethods = ["Processing Gain", "Integration Gain"];
 
 	if (sum(WindowFunctions == settings.WindowFunction) <= 0)
 		%fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);

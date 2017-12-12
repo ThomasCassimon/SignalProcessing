@@ -21,31 +21,24 @@ function [] = plotDFT (signal, handles)
     
    %DETERMINE WINDOW FUNCTION
    switch settings.WindowFunction
-       case "Rectangle"
+       case "Rectangle Window"
            window = rectwin(length(signal));
-           fprintf('Rectangle');
-       case "Bartlett"
+           fprintf('Rectangle Window');
+       case "Bartlett Window"
            window = bartlett(length(signal));
-           fprintf('Bartlett');
-       case "Hann"
+           fprintf('Bartlett Window');
+       case "Hann Window"
            window = hann(length(signal));
-           fprintf('Hann');
-       case "Hamming"
+           fprintf('Hann Window');
+       case "Hamming Window"
            window = hamming(length(signal));
-           fprintf('Hamming');
-       case "Blackman"
+           fprintf('Hamming Window');
+       case "Blackman Window"
            window = blackman(length(signal));
-           fprintf('Blackman');
-       case "Kaiser"
-           fprintf('Kaiser');
-       case "Nuttal"
-           fprintf('Nuttal');
-       case "Blackman-Harris"
-           fprintf('Blackman-Harris');
-       case "Blackman-Nuttal"
-           fprintf('Blackman-Nuttal');
-       case "Flat-Top"
-           fprintf('Flat-Top');
+           fprintf('Blackman Window');
+       case "Flat Top Window"
+           window = flattopwin(length(signal));
+           fprintf('Flat Top Window');
        otherwise
            fprintf('Wrong window function argument');   
    end
@@ -54,53 +47,52 @@ function [] = plotDFT (signal, handles)
    showRaw = get(handles.rawData, 'Value');
    
    fprintf('Raw data %d, Processed data %d\n', showRaw, showProcessed);
-   
-   processedSignal = signal * window;
+   processedSignal = signal .* window;
    
     XpProcessed = fft(processedSignal);
     PhiProcessed = angle(XpProcessed);
 	MagProcessed = mag2db(abs(XpProcessed));
    
+    
+    %TIME DOMAIN PLOT
 	axes(handles.timeDomainPlot);
     cla;
     if showRaw == 1
         plot(K, signal, '-og', 'MarkerEdgeColor', 'Blue', 'MarkerFaceColor','Blue','Color','Blue', 'MarkerSize', 2);
         hold on;
-        %plot(K,signal,K,processedSignal,'Color','Red','Color','Blue');
     end
     if showProcessed == 1 
         plot(K, processedSignal, '-og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
-         %plot(K,processedSignal, 'Color', 'Red');
     end
     if showRaw == 1 && showProcessed == 1
-         %plot(K, signal, 'Color', 'Blue');
          legend('Raw data', 'Processed data');
     end
     hold off;
-    
-    
     
     title('Time Domain');
     xlabel('k');
     ylabel('x[k]');
     grid on;
     
+    
+    
     K = K./2*pi;
     
+    %MAGNITUDE PLOT
 	axes(handles.frequencyMagnitudePlot);
-    
-    %if(showRaw == 1)
+    cla;
+    if(showRaw == 1)
         plot(K, Mag, 'o', 'MarkerEdgeColor','Blue', 'MarkerFaceColor','Blue', 'MarkerSize', 2);
-     %   hold on;
-    %end
-    %if(showProcessed == 1)
-    %    plot(K, MagProcessed, 'o', 'MarkerEdgeColor','Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
-    %end
-    %hold off;
+        hold on;
+    end
+    if(showProcessed == 1)
+        plot(K, MagProcessed, 'o', 'MarkerEdgeColor','Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+    end
+    hold off;
     
-    %if(showRaw == 1 && showProcessed == 1)
-    %    legend('Raw data', 'Processed data');
-    %end
+    if(showRaw == 1 && showProcessed == 1)
+        legend('Raw data', 'Processed data');
+    end
  
   
 	title('Magnitude [dB]');
@@ -109,8 +101,20 @@ function [] = plotDFT (signal, handles)
 	grid on;
     
     
+    %PHASE PLOT
 	axes(handles.frequencyPhasePlot);
-	plot(K, Phi, 'o', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+    cla;
+    
+    if(showRaw == 1)
+        plot(K, Phi, 'o', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+    end
+    if(showProcessed == 1)
+        
+    end 
+    if(showProcessed == 1 && showRaw == 1)
+        
+    end
+	
     
 	title('Phase[°]');
 	xlabel('\omega');
