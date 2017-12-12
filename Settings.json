@@ -1,6 +1,6 @@
 {
-	'WindowFunction':'Windowz'
-	'NoiseRemovalMethod':'Gainz'
-	'ProcessingGainPercentage':'100'
-	'IntegrationGainNumRuns':'1'
+	"WindowFunction":"Rectangle",
+	"NoiseRemovalMethod":"Gainz",
+	"ProcessingGainPercentage":"100",
+	"IntegrationGainNumRuns":"1"
 }
