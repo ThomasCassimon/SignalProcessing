@@ -1,12 +1,9 @@
 function [] = plotDFT (signal, handles)
 
 	settings = LoadSettings('Settings.json');
+    sampleFreq = get(handles.dataTable, 'sampleFreq')
 	SaveSettings('Settings.json', handles);
-	%win = ones(1, length(signal));
-	
-	%if(settings.WindowFunction == "Rectangle")
-	%	win = rectwin(length(signal));
-	%end
+
 
     fprintf('plotting...\n');
 	settings = LoadSettings('Settings.json');
@@ -78,7 +75,8 @@ function [] = plotDFT (signal, handles)
     
     
     
-    K = K./2*pi;
+    K = K .* ((2*pi*sampleFreq)/length(K));
+   
     
     %MAGNITUDE PLOT
 	axes(handles.frequencyMagnitudePlot);

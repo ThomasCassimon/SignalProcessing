@@ -66,11 +66,8 @@ handles.dataPanel = uitab('Parent', handles.tgroup, 'Title', 'Raw data');
 handles.plotPanel = uitab('Parent', handles.tgroup, 'Title', 'Plotting window');
 handles.settingsPanel = uitab('Parent', handles.tgroup, 'Title', 'Processing settings');
 
-
 %Place panels into each tab
 set(handles.dataTable, 'Parent', handles.dataPanel)
-addprop(handles.dataTable, 'selectedRows');
-addprop(handles.dataTable, 'selectedCols');
 set(handles.filterDataButton, 'Parent', handles.dataPanel)
 
 set(handles.rawData, 'Parent', handles.plotPanel)
@@ -78,14 +75,15 @@ set(handles.processedData, 'Parent', handles.plotPanel)
 set(handles.timeDomainPlot, 'Parent', handles.plotPanel)
 set(handles.frequencyMagnitudePlot, 'Parent', handles.plotPanel)
 set(handles.frequencyPhasePlot, 'Parent',handles.plotPanel)
-set(handles.timeDomainTag, 'Parent', handles.plotPanel)
-set(handles.frequencyDomainTag, 'Parent', handles.plotPanel)
 
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
 set(handles.applyButton, 'Parent', handles.settingsPanel)
 set(handles.saveApplyButton,'Parent',handles.settingsPanel)
 
+addprop(handles.dataTable, 'selectedRows');
+addprop(handles.dataTable, 'selectedCols');
+addprop(handles.dataTable, 'sampleFreq');
 
 set(handles.rawData, 'Value', 1);
 
@@ -159,8 +157,7 @@ function Help_ClickedCallback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-%run('helpWindow.m');
-%open('WindowHelp.html');
+open('help.html');
 
 end
 
@@ -197,17 +194,9 @@ function Open_ClickedCallback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-[filename,pathname] = uigetfile({'*.xls*';'*.csv'});
- 
-filename = strcat(pathname, filename);
-
-if not (filename == 0)
-	data = LoadDataFromExcel(filename);
-	
-	data = data(10:end,1:end);
-	
-	set(handles.dataTable,'data',data);
-end
+[data, sampleFreq] = LoadDataFromExcel();
+set(handles.dataTable, 'sampleFreq', sampleFreq);
+set(handles.dataTable,'data',data);
 end
 
 % --- Executes on button press in filterDataButton.

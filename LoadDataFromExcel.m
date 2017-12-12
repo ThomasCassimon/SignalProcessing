@@ -10,7 +10,7 @@ function [dataset, sampleFreq] = LoadDataFromExcel()
 	if not (filename == 0)
 		dataset = xlsread(filename);
 		
-		sampleFreq = dataset(9,1);
+		sampleFreq = dataset(7,1);
 
 		dataset = dataset(10:end,1:end);
 	end
