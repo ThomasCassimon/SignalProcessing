@@ -1,1 +1,6 @@
-{"WindowFunction":"Hann Window","NoiseRemovalMethod":"Processing Gain","ProcessingGainPercentage":"","IntegrationGainNumRuns":""}
+{
+	"WindowFunction":"Rectangle",
+	"NoiseRemovalMethod":"Gainz",
+	"ProcessingGainPercentage":"100",
+	"IntegrationGainNumRuns":"1"
+}

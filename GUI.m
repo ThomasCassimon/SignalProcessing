@@ -176,18 +176,6 @@ function enableWindowFunctionCheckbox_Callback(hObject, eventdata, handles)
 end
 
 
-
-function processingGainEdit_Callback(hObject, eventdata, handles)
-% hObject    handle to processingGainEdit (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of processingGainEdit as text
-%        str2double(get(hObject,'String')) returns contents of processingGainEdit as a double
-
-end
-
-
 % --- Executes during object creation, after setting all properties.
 function processingGainEdit_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to processingGainEdit (see GCBO)
@@ -304,3 +292,16 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 end
+
+
+
+function processingGainEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to processingGainEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of processingGainEdit as text
+%        str2double(get(hObject,'String')) returns contents of processingGainEdit as a double
+
+end
+

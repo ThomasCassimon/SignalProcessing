@@ -6,7 +6,7 @@ function [settings] = LoadSettings(settingsFile)
 
 	settings = jsondecode(fileread(settingsFile));
 	
-	WindowFunctions = ["Rectangle Window","Bartlett Window","Hann Window","Hamming Window","Blackman Window","Kaiser Window","Nuttall Window","Blackman-Harris Window","Blackman-Nuttall Window","Flat_Top Window"];
+	WindowFunctions = ["Rectangle Window","Bartlett Window","Hann Window","Hamming Window","Blackman Window","Flat Top Window"];
 	NoiseRemovalMethods = ["Processing Gain", "Integration Gain"];
 
 	if (sum(WindowFunctions == settings.WindowFunction) <= 0)
