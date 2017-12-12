@@ -1,6 +1,1 @@
-{
-	'WindowFunction':'Windowz'
-	'NoiseRemovalMethod':'Gainz'
-	'ProcessingGainPercentage':'100'
-	'IntegrationGainNumRuns':'1'
-}
+{"WindowFunction":"Hann Window","NoiseRemovalMethod":"Processing Gain","ProcessingGainPercentage":"","IntegrationGainNumRuns":""}
