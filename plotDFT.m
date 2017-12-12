@@ -55,9 +55,11 @@ function [] = plotDFT (signal, handles)
    
    fprintf('Raw data %d, Processed data %d\n', showRaw, showProcessed);
    
-   processedSignal = signal*2;
+   processedSignal = signal * window;
    
-   
+    XpProcessed = fft(processedSignal);
+    PhiProcessed = angle(XpProcessed);
+	MagProcessed = mag2db(abs(XpProcessed));
    
 	axes(handles.timeDomainPlot);
     cla;
@@ -78,7 +80,7 @@ function [] = plotDFT (signal, handles)
     
     
     
-    title('Original Signal');
+    title('Time Domain');
     xlabel('k');
     ylabel('x[k]');
     grid on;
@@ -86,15 +88,30 @@ function [] = plotDFT (signal, handles)
     K = K./2*pi;
     
 	axes(handles.frequencyMagnitudePlot);
-    plot(K, Mag, 'o', 'MarkerEdgeColor','Blue', 'MarkerFaceColor','Blue', 'MarkerSize', 2);
+    
+    %if(showRaw == 1)
+        plot(K, Mag, 'o', 'MarkerEdgeColor','Blue', 'MarkerFaceColor','Blue', 'MarkerSize', 2);
+     %   hold on;
+    %end
+    %if(showProcessed == 1)
+    %    plot(K, MagProcessed, 'o', 'MarkerEdgeColor','Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+    %end
+    %hold off;
+    
+    %if(showRaw == 1 && showProcessed == 1)
+    %    legend('Raw data', 'Processed data');
+    %end
  
   
 	title('Magnitude [dB]');
 	xlabel('\omega');
 	ylabel('|X_p [k]|');
 	grid on;
+    
+    
 	axes(handles.frequencyPhasePlot);
 	plot(K, Phi, 'o', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red', 'MarkerSize', 2);
+    
 	title('Phase[°]');
 	xlabel('\omega');
 	ylabel('Arg(X_p [k])');
