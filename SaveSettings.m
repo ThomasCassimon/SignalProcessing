@@ -7,6 +7,8 @@ settings = struct;
 
 settings.WindowFunction = handles.windowFunctionGroup.SelectedObject.String;
 
+settings.SmoothingFunction = handles.smoothingPanel.SelectedObject.String;
+
 json = jsonencode(settings);
 
 fid = fopen(settingsFile, 'w');

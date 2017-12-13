@@ -2,20 +2,22 @@ function [] = plotDFT (signal, handles)
 
 	settings = LoadSettings('Settings.json',handles);
     sampleFreq = get(handles.dataTable, 'sampleFreq')
-	SaveSettings('Settings.json', handles);
 
     showProcessed = get(handles.processedData, 'Value');
     showRaw = get(handles.rawData, 'Value');
     enableWindow = get(handles.enableWindowFunction, 'appliedValue');
-    enableZeropad = get(handles.enableZeropadding, 'appliedValue');
+    enableZeropadding = get(handles.enableZeropadding, 'appliedValue');
     
     fprintf('plotting...\n');
-	settings = LoadSettings('Settings.json');
     
-    Xp = fft(signal);
+    Xp = fft(signal)
 
 	Phi = angle(Xp);
 	Mag = mag2db(abs(Xp));
+	
+	processedSignal = signal;
+	
+	processedSignal = smooth(signal, settings.SmoothingFunction);
     
     K = [0:1:length(signal)-1];
     
@@ -44,7 +46,7 @@ function [] = plotDFT (signal, handles)
    end
    
    fprintf('Raw data %d, Processed data %d\n', showRaw, showProcessed);
-   processedSignal = signal .* window;
+   processedSignal = processedSignal .* window;
    
     XpProcessed = fft(processedSignal);
     PhiProcessed = angle(XpProcessed);
@@ -73,11 +75,8 @@ function [] = plotDFT (signal, handles)
     ylabel('x[k]');
     grid on;
     
-    
-    
     K = K .* ((2*pi*sampleFreq)/length(K));
-   
-    
+	
     %MAGNITUDE PLOT
 	axes(handles.frequencyMagnitudePlot);
     cla;
