@@ -4,7 +4,9 @@ function [] = plotDFT (signal, handles)
     sampleFreq = get(handles.dataTable, 'sampleFreq')
 	SaveSettings('Settings.json', handles);
 
-
+    showProcessed = get(handles.processedData, 'Value');
+    showRaw = get(handles.rawData, 'Value');
+    
     fprintf('plotting...\n');
 	settings = LoadSettings('Settings.json');
     
@@ -40,8 +42,8 @@ function [] = plotDFT (signal, handles)
            fprintf('Wrong window function argument');   
    end
    
-   showProcessed = get(handles.processedData, 'Value');
-   showRaw = get(handles.rawData, 'Value');
+   
+   
    
    fprintf('Raw data %d, Processed data %d\n', showRaw, showProcessed);
    processedSignal = signal .* window;
