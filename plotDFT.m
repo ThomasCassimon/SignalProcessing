@@ -10,14 +10,16 @@ function [] = plotDFT (signal, handles)
     
     fprintf('plotting...\n');
     
-    Xp = fft(signal)
+    Xp = fft(signal);
 
 	Phi = angle(Xp);
 	Mag = mag2db(abs(Xp));
 	
 	processedSignal = signal;
 	
-	processedSignal = smooth(signal, settings.SmoothingFunction);
+	if (get(handles.enableSmoothingFunction, 'Value'))
+		processedSignal = smooth(signal, settings.SmoothingFunction);
+	end
     
     K = [0:1:length(signal)-1];
     
