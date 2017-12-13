@@ -164,13 +164,13 @@ open('help.html');
 end
 
 
-% --- Executes on button press in enableWindowFunctionCheckbox.
-function enableWindowFunctionCheckbox_Callback(hObject, eventdata, handles)
-% hObject    handle to enableWindowFunctionCheckbox (see GCBO)
+% --- Executes on button press in enableWindowFunction.
+function enableWindowFunction_Callback(hObject, eventdata, handles)
+% hObject    handle to enableWindowFunction (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of enableWindowFunctionCheckbox
+% Hint: get(hObject,'Value') returns toggle state of enableWindowFunction
 
 end
 
@@ -324,6 +324,7 @@ function zeropadding_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of zeropadding as text
 %        str2double(get(hObject,'String')) returns contents of zeropadding as a double
 
+end
 
 % --- Executes during object creation, after setting all properties.
 function zeropadding_CreateFcn(hObject, eventdata, handles)
@@ -337,6 +338,7 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
+end
 
 % --- Executes on button press in enableZeropadding.
 function enableZeropadding_Callback(hObject, eventdata, handles)
