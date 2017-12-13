@@ -1,5 +1,5 @@
 function [smoothedData] = smooth(data,method)
-%smooth Smooth's data using the given method
+%smooth Smooths data using the given method
 %	data is the data to be smoothed
 %   Possible methods are {'Quadratic Regression','Robust Quadratic Regression','Savitzky-Golay Filter'}
 
