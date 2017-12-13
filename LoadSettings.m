@@ -7,19 +7,17 @@ function [settings] = LoadSettings(settingsFile, handles)
 	settings = jsondecode(fileread(settingsFile));
 	
 	WindowFunctions = ["Rectangle Window","Bartlett Window","Hann Window","Hamming Window","Blackman Window","Flat Top Window"];
-	NoiseRemovalMethods = ["Processing Gain", "Integration Gain"];
+	SmoothingFunctions = ["Quadratic Regression", "Robust Quadratic Regression", "Savitzky-Golay Filter"];
+	
 
 	if (sum(WindowFunctions == settings.WindowFunction) <= 0)
 		%fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);
 		settings.WindowFunction = "Hamming";
 	end
 
-	if (sum(NoiseRemovalMethods == settings.NoiseRemovalMethod) <= 0)
+	if (sum(SmoothingFunctions == settings.SmoothingFunction) <= 0)
 		%fprintf('Unknown Noise Removal Method: "%s", Choosing processing gain with 400%%.\n', settings.NoiseRemovalMethod);
-		settings.NoiseRemovalMethod = "ProcessingGain";
-		settings.ProcessingGainPercentage = 400;
-    end
-    
-    set(handles.windowFunctionGroup.SelectedObject,'String', settings.WindowFunction);
+		settings.SmoothingFunction = "Savitzky-Golay Filter";
+	end
 end
 

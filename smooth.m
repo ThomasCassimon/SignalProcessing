@@ -16,5 +16,5 @@ function [smoothedData] = smooth(data,method)
 		otherwise
 			fprintf('Unknown smoothing method "%s"\n', method);
 			smoothedData = data;
+	end
 end
-

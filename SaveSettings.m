@@ -6,8 +6,7 @@ function [] = SaveSettings(settingsFile, handles)
 settings = struct;
 
 settings.WindowFunction = handles.windowFunctionGroup.SelectedObject.String;
-settings.NoiseRemovalMethod = handles.noiseRemovalGroup.SelectedObject.String;
-settings.IntegrationGainNumRuns = get(handles.integrationGainEdit, 'String');
+settings.SmoothingFunction = handles.smoothingPanel.SelectedObject.String;
 
 json = jsonencode(settings);
 
