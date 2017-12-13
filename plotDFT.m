@@ -6,6 +6,8 @@ function [] = plotDFT (signal, handles)
 
     showProcessed = get(handles.processedData, 'Value');
     showRaw = get(handles.rawData, 'Value');
+    enableWindow = get(handles.enableWindowFunction, 'appliedValue');
+    enableZeropad = get(handles.enableZeropadding, 'appliedValue');
     
     fprintf('plotting...\n');
 	settings = LoadSettings('Settings.json');
