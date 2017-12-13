@@ -165,13 +165,13 @@ open('help.html');
 end
 
 
-% --- Executes on button press in enableWindowFunctionCheckbox.
-function enableWindowFunctionCheckbox_Callback(hObject, eventdata, handles)
-% hObject    handle to enableWindowFunctionCheckbox (see GCBO)
+% --- Executes on button press in enableWindowFunction.
+function enableWindowFunction_Callback(hObject, eventdata, handles)
+% hObject    handle to enableWindowFunction (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of enableWindowFunctionCheckbox
+% Hint: get(hObject,'Value') returns toggle state of enableWindowFunction
 
 end
 
@@ -372,20 +372,11 @@ function sgolaySmooth_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of sgolaySmooth
 end
 
-% --- Executes on button press in enableSmoothingFunction.
-function enableSmoothingFunction_Callback(hObject, eventdata, handles)
-% hObject    handle to enableSmoothingFunction (see GCBO)
+% --- Executes on button press in enableSmoothing.
+function enableSmoothing_Callback(hObject, eventdata, handles)
+% hObject    handle to enableSmoothing (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of enableSmoothingFunction
+% Hint: get(hObject,'Value') returns toggle state of enableSmoothing
 end
-
-
-% --- Executes on button press in enableSmoothingFunction.
-function enableSmoothingFunction_Callback(hObject, eventdata, handles)
-% hObject    handle to enableSmoothingFunction (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of enableSmoothingFunction
