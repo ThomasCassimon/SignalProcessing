@@ -10,7 +10,7 @@ function [] = plotDFT (signal, handles)
     
     fprintf('plotting...\n');
     
-    Xp = fft(signal)
+    Xp = fft(signal);
 
 	Phi = angle(Xp);
 	Mag = mag2db(abs(Xp));
@@ -18,33 +18,11 @@ function [] = plotDFT (signal, handles)
 	processedSignal = signal;
 	
 	processedSignal = smooth(signal, settings.SmoothingFunction);
+    processedSignal = applyWindowFunction(processedSignal,settings.WindowFunction;
     
     K = [0:1:length(signal)-1];
     
-   %DETERMINE WINDOW FUNCTION
-   switch settings.WindowFunction
-       case "Rectangle Window"
-           window = rectwin(length(signal));
-           fprintf('Rectangle Window');
-       case "Bartlett Window"
-           window = bartlett(length(signal));
-           fprintf('Bartlett Window');
-       case "Hann Window"
-           window = hann(length(signal));
-           fprintf('Hann Window');
-       case "Hamming Window"
-           window = hamming(length(signal));
-           fprintf('Hamming Window');
-       case "Blackman Window"
-           window = blackman(length(signal));
-           fprintf('Blackman Window');
-       case "Flat Top Window"
-           window = flattopwin(length(signal));
-           fprintf('Flat Top Window');
-       otherwise
-           fprintf('Wrong window function argument');   
-   end
-   
+
    fprintf('Raw data %d, Processed data %d\n', showRaw, showProcessed);
    processedSignal = processedSignal .* window;
    
