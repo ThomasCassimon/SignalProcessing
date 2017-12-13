@@ -17,7 +17,6 @@ function [] = plotDFT (signal, handles)
     
     K = [0:1:length(signal)-1];
     
-    
    %DETERMINE WINDOW FUNCTION
    switch settings.WindowFunction
        case "Rectangle Window"
@@ -41,9 +40,6 @@ function [] = plotDFT (signal, handles)
        otherwise
            fprintf('Wrong window function argument');   
    end
-   
-   
-   
    
    fprintf('Raw data %d, Processed data %d\n', showRaw, showProcessed);
    processedSignal = signal .* window;
