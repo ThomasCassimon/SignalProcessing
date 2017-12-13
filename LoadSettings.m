@@ -9,12 +9,28 @@ function [settings] = LoadSettings(settingsFile, handles)
 	WindowFunctions = ["Rectangle Window","Bartlett Window","Hann Window","Hamming Window","Blackman Window","Flat Top Window"];
 
 	if (sum(WindowFunctions == settings.WindowFunction) <= 0)
-		%fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);
+		fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);
 		settings.WindowFunction = "Hamming";
     end
     
-    %set(handles.windowFunctionGroup.SelectedObject,'String', settings.WindowFunction);
-    get(handles.windowFunctionGroup.SelectedObject, 'String')
-    set(handles.windowFunctionGroup.SelectedObject,'String', settings.WindowFunction);
+    get(handles.windowFunctionGroup, 'selectedob')
+    
+    %set the selected object in the radio button group to the right button
+   switch settings.WindowFunction
+       case "Rectangle Window"
+           set(handles.windowFunctionGroup,'selectedob', handles.rectangleWindow);
+       case "Bartlett Window"
+           set(handles.windowFunctionGroup,'selectedob', handles.bartlettWindow);
+       case "Hann Window"
+           set(handles.windowFunctionGroup,'selectedob', handles.hannWindow);
+       case "Hamming Window"
+           set(handles.windowFunctionGroup,'selectedob', handles.hammingWindow);
+       case "Blackman Window"
+           set(handles.windowFunctionGroup,'selectedob', handles.blackmanWindow);
+       case "Flat Top Window"           
+           set(handles.windowFunctionGroup,'selectedob', handles.flatTopWindow)
+       otherwise
+           fprintf('Wrong window function argument');   
+   end
 end
 

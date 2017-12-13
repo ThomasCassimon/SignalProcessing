@@ -79,7 +79,8 @@ set(handles.frequencyPhasePlot, 'Parent',handles.plotPanel)
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
 set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
 set(handles.applyButton, 'Parent', handles.settingsPanel)
-set(handles.saveApplyButton,'Parent',handles.settingsPanel)
+set(handles.saveApplyButton,'Parent', handles.settingsPanel)
+set(handles.smoothingPanel, 'Parent', handles.settingsPanel)
 
 addprop(handles.dataTable, 'selectedRows');
 addprop(handles.dataTable, 'selectedCols');
@@ -300,8 +301,6 @@ function processingGainEdit_Callback(hObject, eventdata, handles)
 
 end
 
-
-
 % --------------------------------------------------------------------
 function open_settings_ClickedCallback(hObject, eventdata, handles)
 % hObject    handle to open_settings (see GCBO)
@@ -314,8 +313,6 @@ LoadSettings(filename, handles);
 
 end
 
-
-
 function zeropadding_Callback(hObject, eventdata, handles)
 % hObject    handle to zeropadding (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -323,7 +320,6 @@ function zeropadding_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of zeropadding as text
 %        str2double(get(hObject,'String')) returns contents of zeropadding as a double
-
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -337,7 +333,6 @@ function zeropadding_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
 end
 
 % --- Executes on button press in enableZeropadding.
@@ -347,5 +342,41 @@ function enableZeropadding_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of enableZeropadding
+end
 
+
+% --- Executes on button press in quadRegSmooth.
+function quadRegSmooth_Callback(hObject, eventdata, handles)
+% hObject    handle to quadRegSmooth (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of quadRegSmooth
+end
+
+% --- Executes on button press in robustQuadRegQSmooth.
+function robustQuadRegQSmooth_Callback(hObject, eventdata, handles)
+% hObject    handle to robustQuadRegQSmooth (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of robustQuadRegQSmooth
+end
+
+% --- Executes on button press in sgolaySmooth.
+function sgolaySmooth_Callback(hObject, eventdata, handles)
+% hObject    handle to sgolaySmooth (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of sgolaySmooth
+end
+
+% --- Executes on button press in enableSmoothing.
+function enableSmoothing_Callback(hObject, eventdata, handles)
+% hObject    handle to enableSmoothing (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of enableSmoothing
 end
