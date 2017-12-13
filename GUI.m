@@ -372,11 +372,20 @@ function sgolaySmooth_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of sgolaySmooth
 end
 
-% --- Executes on button press in enableSmoothing.
-function enableSmoothing_Callback(hObject, eventdata, handles)
-% hObject    handle to enableSmoothing (see GCBO)
+% --- Executes on button press in enableSmoothingFunction.
+function enableSmoothingFunction_Callback(hObject, eventdata, handles)
+% hObject    handle to enableSmoothingFunction (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of enableSmoothing
+% Hint: get(hObject,'Value') returns toggle state of enableSmoothingFunction
 end
+
+
+% --- Executes on button press in enableSmoothingFunction.
+function enableSmoothingFunction_Callback(hObject, eventdata, handles)
+% hObject    handle to enableSmoothingFunction (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of enableSmoothingFunction
