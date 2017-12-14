@@ -87,6 +87,7 @@ addprop(handles.dataTable, 'selectedCols');
 addprop(handles.dataTable, 'sampleFreq');
 addprop(handles.enableZeropadding, 'appliedValue');
 addprop(handles.enableWindowFunction, 'appliedValue');
+addprop(handles.enableSmoothingFunction, 'appliedValue');
 
 set(handles.rawData, 'Value', 1);
 
@@ -240,8 +241,8 @@ function applyButton_Callback(hObject, eventdata, handles)
 
 SaveSettings('Settings.json', handles);
 plotDFT(get(handles.dataTable, 'data'),handles);
-set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding('Value')));
-set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction('Value')));
+set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding,'Value'));
+set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction,'Value'));
 end
 
 % --- Executes on button press in saveApplyButton.
@@ -253,8 +254,9 @@ function saveApplyButton_Callback(hObject, eventdata, handles)
 [filename, pathname] = uiputfile('.json');
 settingsFile = strcat(pathname, filename);
 SaveSettings(settingsFile, handles);
-set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding('Value')));
-set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction('Value')));
+set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding,'Value'));
+set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction,'Value'));
+set(handles.enableWindowFunction, 'appliedValue', get(handles.enableSmoothingFunction, 'Value'));
 
 plotDFT(get(handles.dataTable, 'data'), handles);
 end
@@ -310,6 +312,7 @@ function open_settings_ClickedCallback(hObject, eventdata, handles)
 [filename,pathname] = uigetfile({'*.json'});
 filename = strcat(pathname, filename);
 LoadSettings(filename, handles);
+plotDFT(get(handles.dataTable,'data'),handles);
 
 end
 

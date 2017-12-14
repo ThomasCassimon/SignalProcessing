@@ -5,14 +5,16 @@ function [dataset, sampleFreq] = LoadDataFromExcel()
 
 	[filename,pathname] = uigetfile({'*.xls*';'*.csv'});
  
-	filename = strcat(pathname, filename);
+    if(not(filename == 0))
+        filename = strcat(pathname, filename);
 
-	if not (filename == 0)
-		dataset = xlsread(filename);
-		
-		sampleFreq = dataset(7,1);
+        if not (filename == 0)
+            dataset = xlsread(filename);
 
-		dataset = dataset(10:end,1:end);
-	end
+            sampleFreq = dataset(7,1);
+
+            dataset = dataset(10:end,1:end);
+        end
+    end
 end
 
