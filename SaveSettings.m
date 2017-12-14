@@ -9,6 +9,8 @@ settings.WindowFunction = handles.windowFunctionGroup.SelectedObject.String;
 
 settings.SmoothingFunction = handles.smoothingPanel.SelectedObject.String;
 
+settings.ZeroPadding = get(handles.zeropadding,'String');
+
 json = jsonencode(settings);
 
 fid = fopen(settingsFile, 'w');
