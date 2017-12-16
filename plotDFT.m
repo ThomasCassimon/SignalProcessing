@@ -2,13 +2,13 @@ function [] = plotDFT (signal, handles)
 
 	settings = LoadSettings('Settings.json',handles);
     sampleFreq = get(handles.dataTable, 'sampleFreq')
-	SaveSettings('Settings.json', handles);
 
     showProcessed = get(handles.processedData, 'Value');
     showRaw = get(handles.rawData, 'Value');
+    enableWindow = get(handles.enableWindowFunction, 'appliedValue');
+    enableZeropadding = get(handles.enableZeropadding, 'appliedValue');
     
     fprintf('plotting...\n');
-	settings = LoadSettings('Settings.json');
     
     Xp = fft(signal);
 
