@@ -109,17 +109,17 @@ function [] = plotDFT (signal, handles)
 	hold on;
 	
 	if showRaw == 1
-        plot(K, Mag, '-og', 'MarkerEdgeColor', 'Blue', 'MarkerFaceColor','Blue','Color','Blue', 'MarkerSize', 2);
+        plot(K, Mag, 'og', 'MarkerEdgeColor', 'Blue', 'MarkerFaceColor','Blue','Color','Blue', 'MarkerSize', 2);
         legend('Raw data');
 	end
 	
 	if showProcessed == 1
-        plot(K, MagProcessed, '-og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
+        plot(K, MagProcessed, 'og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
         legend('Processed data');
 	end
 	
 	if showMath == 1
-		plot(K, MagMath, '-og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
+		plot(K, MagMath, 'og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
 		legend('Math data');
 	end
 
@@ -165,17 +165,17 @@ function [] = plotDFT (signal, handles)
 %     end 
 
 	if showRaw == 1
-        plot(K, Phi, '-og', 'MarkerEdgeColor', 'Blue', 'MarkerFaceColor','Blue','Color','Blue', 'MarkerSize', 2);
+        plot(K, Phi, 'og', 'MarkerEdgeColor', 'Blue', 'MarkerFaceColor','Blue','Color','Blue', 'MarkerSize', 2);
         legend('Raw data');
 	end
 	
 	if showProcessed == 1
-        plot(K, PhiProcessed, '-og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
+        plot(K, PhiProcessed, 'og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
         legend('Processed data');
 	end
 	
 	if showMath == 1
-		plot(K, PhiMath, '-og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
+		plot(K, PhiMath, 'og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
 		legend('Math data');
 	end
 
