@@ -72,6 +72,7 @@ set(handles.filterDataButton, 'Parent', handles.dataPanel)
 
 set(handles.rawData, 'Parent', handles.plotPanel)
 set(handles.processedData, 'Parent', handles.plotPanel)
+set(handles.mathData, 'Parent', handles.plotPanel')
 set(handles.timeDomainPlot, 'Parent', handles.plotPanel)
 set(handles.frequencyMagnitudePlot, 'Parent', handles.plotPanel)
 set(handles.frequencyPhasePlot, 'Parent',handles.plotPanel)
@@ -81,6 +82,8 @@ set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
 set(handles.applyButton, 'Parent', handles.settingsPanel)
 set(handles.saveApplyButton,'Parent', handles.settingsPanel)
 set(handles.smoothingPanel, 'Parent', handles.settingsPanel)
+set(handles.mathDataPanel, 'Parent', handles.settingsPanel)
+set(handles.mathProcessedDataPanel, 'Parent', handles.settingsPanel)
 
 addprop(handles.dataTable, 'selectedRows');
 addprop(handles.dataTable, 'selectedCols');
@@ -241,8 +244,10 @@ function applyButton_Callback(hObject, eventdata, handles)
 
 SaveSettings('Settings.json', handles);
 plotDFT(get(handles.dataTable, 'data'),handles);
+
 set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding,'Value'));
 set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction,'Value'));
+set(handles.enableSmoothingFunction, 'appliedValue', get(handles.enableSmoothingFunction,'Value'));
 end
 
 % --- Executes on button press in saveApplyButton.
@@ -254,9 +259,9 @@ function saveApplyButton_Callback(hObject, eventdata, handles)
 [filename, pathname] = uiputfile('.json');
 settingsFile = strcat(pathname, filename);
 SaveSettings(settingsFile, handles);
-set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding,'Value'));
-set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction,'Value'));
-set(handles.enableWindowFunction, 'appliedValue', get(handles.enableSmoothingFunction, 'Value'));
+set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding('Value')));
+set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction('Value')));
+set(handles.enableSmoothingFunction, 'appliedValue', get(handles.enableSmoothingFunction,'Value'));
 
 plotDFT(get(handles.dataTable, 'data'), handles);
 end
@@ -312,7 +317,6 @@ function open_settings_ClickedCallback(hObject, eventdata, handles)
 [filename,pathname] = uigetfile({'*.json'});
 filename = strcat(pathname, filename);
 LoadSettings(filename, handles);
-plotDFT(get(handles.dataTable,'data'),handles);
 
 end
 
@@ -375,11 +379,24 @@ function sgolaySmooth_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of sgolaySmooth
 end
 
-% --- Executes on button press in enableSmoothing.
-function enableSmoothing_Callback(hObject, eventdata, handles)
-% hObject    handle to enableSmoothing (see GCBO)
+% --- Executes on button press in mathData.
+function enableSmoothingFunction_Callback(hObject, eventdata, handles)
+% hObject    handle to mathData (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of enableSmoothing
+% Hint: get(hObject,'Value') returns toggle state of mathData
+end
+
+
+% --- Executes on button press in mathData.
+function mathData_Callback(hObject, eventdata, handles)
+% hObject    handle to mathData (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of mathData
+
+plotDFT(get(handles.dataTable, 'data'), handles);
+
 end
