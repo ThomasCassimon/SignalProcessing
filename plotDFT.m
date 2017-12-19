@@ -8,7 +8,6 @@ function [] = plotDFT (signal, handles)
     showRaw = get(handles.rawData, 'Value');
 	showMath = get(handles.mathData, 'Value');
     enableWindowFunction = get(handles.enableWindowFunction, 'appliedValue');
-    enableZeropadding = get(handles.enableZeropadding, 'appliedValue');
     enableSmoothing = get(handles.enableSmoothingFunction, 'appliedValue');
 
     %fprintf('plotting...\n');
@@ -23,10 +22,6 @@ function [] = plotDFT (signal, handles)
         processedSignal = smooth(signal, settings.SmoothingFunction);
     end
 
-    if (enableZeropadding)
-        processedSignal = zero_pad_time(signal, settings.ZeroPadding);
-    end
-
     if(enableWindowFunction)
         processedSignal = applyWindowFunction(signal, settings.WindowFunction);
 	end
@@ -34,9 +29,8 @@ function [] = plotDFT (signal, handles)
 	mathSignal = generateMathChannel(signal, processedSignal, handles);
 	
     K = [0:1:length(signal)-1];
+    Kprocessed = [0:1:length(processedSignal)-1];
 
-
-   %fprintf('Raw data %d, Processed data %d\n', showRaw, showProcessed);
 
     XpProcessed = fft(processedSignal);
     PhiProcessed = angle(XpProcessed);
@@ -58,12 +52,12 @@ function [] = plotDFT (signal, handles)
 	end
 	
 	if showProcessed == 1
-        plot(K, processedSignal, '-og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
+        plot(Kprocessed, processedSignal, '-og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
         legend('Processed data');
 	end
 	
 	if showMath == 1
-		plot(K, mathSignal, '-og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
+		plot(Kprocessed, mathSignal, '-og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
 		legend('Math data');
 	end    
 		
@@ -91,6 +85,7 @@ function [] = plotDFT (signal, handles)
     grid on;
 
     K = K .* ((2*pi*sampleFreq)/length(K));
+    Kprocessed = Kprocessed .* ((2*pi*sampleFreq)/length(Kprocessed));
 
     %MAGNITUDE PLOT
     axes(handles.frequencyMagnitudePlot);
@@ -114,12 +109,12 @@ function [] = plotDFT (signal, handles)
 	end
 	
 	if showProcessed == 1
-        plot(K, MagProcessed, 'og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
+        plot(Kprocessed, MagProcessed, 'og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
         legend('Processed data');
 	end
 	
 	if showMath == 1
-		plot(K, MagMath, 'og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
+		plot(Kprocessed, MagMath, 'og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
 		legend('Math data');
 	end
 
@@ -170,12 +165,12 @@ function [] = plotDFT (signal, handles)
 	end
 	
 	if showProcessed == 1
-        plot(K, PhiProcessed, 'og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
+        plot(Kprocessed, PhiProcessed, 'og', 'MarkerEdgeColor', 'Red', 'MarkerFaceColor','Red','Color','Red', 'MarkerSize', 2);
         legend('Processed data');
 	end
 	
 	if showMath == 1
-		plot(K, PhiMath, 'og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
+		plot(Kprocessed, PhiMath, 'og', 'MarkerEdgeColor', 'Green', 'MarkerFaceColor','Green','Color','Green', 'MarkerSize', 2);
 		legend('Math data');
 	end
 
