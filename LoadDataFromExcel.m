@@ -8,13 +8,19 @@ function [dataset, sampleFreq] = LoadDataFromExcel()
     if(not(filename == 0))
         filename = strcat(pathname, filename);
 
-        if not (filename == 0)
+        if (not(filename == 0))
             dataset = xlsread(filename);
 
             sampleFreq = dataset(7,1);
 
             dataset = dataset(10:end,1:end);
-        end
-    end
+		else
+			dataset = zeros(1);
+			sampleFreq = 1;
+		end
+	else
+		dataset = zeros(1);
+		sampleFreq = 1;
+	end
 end
 
