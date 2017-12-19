@@ -400,3 +400,14 @@ function mathData_Callback(hObject, eventdata, handles)
 plotDFT(get(handles.dataTable, 'data'), handles);
 
 end
+
+
+% --------------------------------------------------------------------
+function Save_ClickedCallback(hObject, eventdata, handles)
+% hObject    handle to Save (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+SaveDataToExcel(get(handles.dataTable, 'data'), get(handles.dataTable, 'sampleFreq'), handles);
+
+end
