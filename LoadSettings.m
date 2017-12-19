@@ -15,11 +15,6 @@ function [settings] = LoadSettings(settingsFile, handles)
 		%fprintf('Unknown Noise Removal Method: "%s", Choosing processing gain with 400%%.\n', settings.NoiseRemovalMethod);
 		settings.SmoothingFunction = "Savitzky-Golay Filter";
     end
-    
-    if(settings.ZeroPadding < 0)
-        fprintf('invalid zeropadding value %f, choosing 0', settings.ZeroPadding);
-        settings.ZeroPadding = 0;
-    end
 
 	if (sum(WindowFunctions == settings.WindowFunction) <= 0)
 		fprintf('Unknown Window Function: "%s", Choosing Hamming window.\n', settings.WindowFunction);
@@ -43,6 +38,5 @@ function [settings] = LoadSettings(settingsFile, handles)
        otherwise
            fprintf('Wrong window function argument');   
    end
-    
 end
 
