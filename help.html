@@ -4,37 +4,40 @@
   </head>
   <body>
     <h1> Help </h1>
-    <div>
+    <div class="paragraphWTitle">
       <h2>Toolbar</h2>
-        <div>
-          <img src="./Images/file_save.png" alt="file_save">   Save the processed data. <br>
+          <img src="./Images/file_save.png" alt="file_save">   Save the data (raw data, processed data, math data). <br>
           <img src="./Images/file_open.png" alt = "file_open"> Open an excel file to import data. <br>
           <img src="./Images/helpicon.gif" alt = "help"> Opens the help window. <br>
           <img src ="./Images/settings_open.png" alt = "settings_open"> Import settings from a file. <br>
-        </div>
-      <h2>Raw data tab</h2>
-        <div>
-          In the raw data tab you can select data from the table that you want to plot <br>
-        </div>
+    </div>
+    <div class="paragraphWTitle">
+        <h2>Raw data tab</h2>
+          In the raw data tab you can select data from the table that you want to plot.<br>
+          After you have selected the desired data, press the filter data button to get rid of the other data and plot the selected data in the plot tab.<br>
+    </div>
+    <div class="paragraphWTitle">
       <h2>Plotting tab</h2>
-        <div>
           In the plotting tab you can see the plotted version of the data.<br>
           You can choose to plot the raw data and the data after processing using the checkboxes. <br>
           <ul>
               <li> The top plot is the time domain version of the data. </li>
-              <li> The middle plot is the magnitude component of the frequency domain version of the data. </li>
-              <li> The bottom plot is the phase component of the frequency domain version of the data.  </li>
+              <li> The middle plot is the magnitude component of the FFT of the data. </li>
+              <li> The bottom plot is the phase component of the FFT of the data.  </li>
           </ul>
-        </div>
+    </div>
+    <div class="paragraphWTitle">
       <h2>Settings tab</h2>
-        <div>
           In the settings tab you can select all possible settings. <br>
           <h3>Window Functions</h3>
           The window functions are used to avoid spectral leak.<br>
-          For more info on each window function click <A HREF="./WindowHelp.html">here</A>.
-          <h3>Zero Padding</h3>
-          Zero padding can be used to increase the ....
+          For more info on each window function click <A href="./WindowHelp.html">here</A>.
           <h3>Smoothing</h3>
           Smoothing algorithms can be used to smooth out the high frequencies in the signal. If you only want these frequencies you can use the math settings. <br>
-          For more info on each smoothing algorithm click <A HREF="./SmoothingHelp.html">here</A>. 
-        </div>
+          For more info on each smoothing algorithm click <A href="./SmoothingHelp.html">here</A>.
+          <h3>Math Settings</h3>
+          The math settings can be used to perform certain math calculations between the raw data and the processed data.<br>
+          You can select a sign for the raw data. For the processed data you can choose to substract, add, divide, multiply with the raw data.<br>
+    </div>
+    </body>
+</html>
