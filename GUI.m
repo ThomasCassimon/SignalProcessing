@@ -72,22 +72,23 @@ set(handles.filterDataButton, 'Parent', handles.dataPanel)
 
 set(handles.rawData, 'Parent', handles.plotPanel)
 set(handles.processedData, 'Parent', handles.plotPanel)
-set(handles.mathData, 'Parent', handles.plotPanel)
-set(handles.mathDataPanel, 'Parent', handles.plotPanel')
+set(handles.mathData, 'Parent', handles.plotPanel')
 set(handles.timeDomainPlot, 'Parent', handles.plotPanel)
 set(handles.frequencyMagnitudePlot, 'Parent', handles.plotPanel)
 set(handles.frequencyPhasePlot, 'Parent',handles.plotPanel)
 
 set(handles.windowFunctionGroup, 'Parent', handles.settingsPanel)
+set(handles.noiseRemovalGroup, 'Parent', handles.settingsPanel)
 set(handles.applyButton, 'Parent', handles.settingsPanel)
 set(handles.saveApplyButton,'Parent', handles.settingsPanel)
 set(handles.smoothingPanel, 'Parent', handles.settingsPanel)
 set(handles.mathDataPanel, 'Parent', handles.settingsPanel)
-set(handles.mathChannelEquation, 'Parent', handles.settingsPanel)
+set(handles.mathProcessedDataPanel, 'Parent', handles.settingsPanel)
 
 addprop(handles.dataTable, 'selectedRows');
 addprop(handles.dataTable, 'selectedCols');
 addprop(handles.dataTable, 'sampleFreq');
+addprop(handles.enableZeropadding, 'appliedValue');
 addprop(handles.enableWindowFunction, 'appliedValue');
 addprop(handles.enableSmoothingFunction, 'appliedValue');
 
@@ -244,6 +245,7 @@ function applyButton_Callback(hObject, eventdata, handles)
 SaveSettings('Settings.json', handles);
 plotDFT(get(handles.dataTable, 'data'),handles);
 
+set(handles.enableZeropadding, 'appliedValue', get(handles.enableZeropadding,'Value'));
 set(handles.enableWindowFunction, 'appliedValue', get(handles.enableWindowFunction,'Value'));
 set(handles.enableSmoothingFunction, 'appliedValue', get(handles.enableSmoothingFunction,'Value'));
 end
@@ -377,80 +379,28 @@ function sgolaySmooth_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of sgolaySmooth
 end
 
-% --- Executes on button press in mathDataPanel.
+% --- Executes on button press in mathData.
 function enableSmoothingFunction_Callback(hObject, eventdata, handles)
-% hObject    handle to mathDataPanel (see GCBO)
+% hObject    handle to mathData (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of mathDataPanel
+% Hint: get(hObject,'Value') returns toggle state of mathData
 end
 
 
-% --- Executes on button press in mathDataPanel.
+% --- Executes on button press in mathData.
 function mathData_Callback(hObject, eventdata, handles)
-% hObject    handle to mathDataPanel (see GCBO)
+% hObject    handle to mathData (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of mathDataPanel
+% Hint: get(hObject,'Value') returns toggle state of mathData
 
 plotDFT(get(handles.dataTable, 'data'), handles);
 
 end
 
-% --- Executes on button press in mathData_DataPlus.
-function mathData_DataPlus_Callback(hObject, eventdata, handles)
-% hObject    handle to mathData_DataPlus (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of mathData_DataPlus
-end
-
-% --- Executes on button press in mathData_DataMinus.
-function mathData_DataMinus_Callback(hObject, eventdata, handles)
-% hObject    handle to mathData_DataMinus (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of mathData_DataMinus
-end
-
-% --- Executes on button press in mathData_PDataMinus.
-function mathData_PDataMinus_Callback(hObject, eventdata, handles)
-% hObject    handle to mathData_PDataMinus (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of mathData_PDataMinus
-end
-
-% --- Executes on button press in mathData_PDataPlus.
-function mathData_PDataPlus_Callback(hObject, eventdata, handles)
-% hObject    handle to mathData_PDataPlus (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of mathData_PDataPlus
-end
-
-% --- Executes on button press in mathData_PDataMultiply.
-function mathData_PDataMultiply_Callback(hObject, eventdata, handles)
-% hObject    handle to mathData_PDataMultiply (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of mathData_PDataMultiply
-end
-
-% --- Executes on button press in mathData_PDataDivide.
-function mathData_PDataDivide_Callback(hObject, eventdata, handles)
-% hObject    handle to mathData_PDataDivide (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of mathData_PDataDivide
 
 % --------------------------------------------------------------------
 function Save_ClickedCallback(hObject, eventdata, handles)
