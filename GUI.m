@@ -399,7 +399,6 @@ plotDFT(get(handles.dataTable, 'data'), handles);
 
 end
 
-
 % --- Executes on button press in mathData_DataPlus.
 function mathData_DataPlus_Callback(hObject, eventdata, handles)
 % hObject    handle to mathData_DataPlus (see GCBO)
@@ -452,4 +451,13 @@ function mathData_PDataDivide_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of mathData_PDataDivide
+
+% --------------------------------------------------------------------
+function Save_ClickedCallback(hObject, eventdata, handles)
+% hObject    handle to Save (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+SaveDataToExcel(get(handles.dataTable, 'data'), get(handles.dataTable, 'sampleFreq'), handles);
+
 end
